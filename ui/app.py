@@ -3,7 +3,7 @@ from time import strftime
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, validators
 
-from search import check_ceo_in_file as check_ceo
+from ui.search import check_ceo_in_file as check_ceo
 
 DEBUG = True
 app = Flask(__name__)

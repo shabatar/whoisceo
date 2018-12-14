@@ -5,6 +5,10 @@ import nltk.data
 from nltk.tag.stanford import StanfordNERTagger
 import pandas as pd
 
+sp500 = '../data/sp-500.csv'
+ceos_pkl = '../data/ceos.pkl'
+companies_pkl = '../data/companies.pkl'
+
 def my_search(query, es):
     return es.search(index="test-index", body={"query":
                                                    {"match":
@@ -87,12 +91,12 @@ def loadall(filename):
                 break
 
 def check_ceo(company):
-    df = pd.read_csv('sp-500.csv', sep=',', header=0)
+    df = pd.read_csv(sp500, sep=',', header=0)
     ciks = list(df['Symbol'])
     names = list(df['Name'])
     if (company not in ciks and company not in names):
         raise LookupError("Company not found")
-    companies = list(loadall('companies.pkl'))
+    companies = list(loadall(companies_pkl))
     try:
         ind = ciks.index(company)
     except ValueError:
@@ -120,8 +124,8 @@ def check_ceo(company):
     return ceos.keys()
 
 def check_ceo_in_file(company):
-    ceos = list(loadall('ceos.pkl'))
-    df = pd.read_csv('sp-500.csv', sep=',', header=0)
+    ceos = list(loadall(ceos_pkl))
+    df = pd.read_csv(sp500, sep=',', header=0)
     ciks = list(df['Symbol'])
     names = list(df['Name'])
     if (company not in ciks and company not in names):
@@ -131,8 +135,8 @@ def check_ceo_in_file(company):
     return ceo_list
 
 if __name__ == '__main__':
-    f = open('ceos.pkl', 'ab+')
-    df = pd.read_csv('sp-500.csv', sep=',', header=0)
+    f = open(ceos_pkl, 'ab+')
+    df = pd.read_csv(sp500, sep=',', header=0)
     ciks = list(df['Symbol'])
     names = list(df['Name'])
     ceo = []
