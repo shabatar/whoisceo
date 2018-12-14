@@ -1,0 +1,16 @@
+ControlSocket /etc/tor/run/control
+ControlSocketsGroupWritable 1
+ControlPort 0.0.0.0:9051
+CookieAuthentication 1
+CookieAuthFileGroupReadable 1
+CookieAuthFile /etc/tor/run/control.authcookie
+DataDirectory /var/lib/tor
+RunAsDaemon 0
+User tor
+AutomapHostsOnResolve 1
+ExitPolicy reject *:*
+VirtualAddrNetworkIPv4 10.192.0.0/10
+DNSPort 5353
+SocksPort 0.0.0.0:9050 IsolateDestAddr
+TransPort 0.0.0.0:9040
+HashedControlPassword 16:9AEEA31FFBD7C8FD605D2AB873F6F0A324CCC231FABA84E8F71CB569F7
