@@ -1,5 +1,27 @@
-# Who is CEO?
+# Who Is CEO?
+
 A flask webUI demo app to determine the CEO of a company by its CIK (Central Index Key)
+
+## Before running
+
+Before running the app, one needs to run
+
+```
+$ python3 get_reports.py
+```
+
+in order to load companies reports.
+
+
+After the reports are pickled, run
+
+```
+$ python3 search.py
+```
+
+in order to perform search in reports.
+
+### Deploy and Run app in Docker
 
 ```
 $ docker build -t whoisceo:latest . 
@@ -8,3 +30,5 @@ $ docker build -t whoisceo:latest .
 ```
 $ docker run -d -p 5000:5000 whoisceo
 ```
+
+Then go to 127.0.0.1:5000 inside a browser of any kind.
