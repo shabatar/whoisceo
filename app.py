@@ -1,7 +1,7 @@
 from time import strftime
 from flask import Flask, render_template, flash, request
 from wtforms import Form, validators, StringField
-from search import check_ceo as check_ceo
+from search import return_dumped_ceo as check_ceo
 
 
 class ReusableForm(Form):
@@ -40,7 +40,7 @@ def hello():
     if form.validate():
         try:
             log_company(company)
-            ceo = check_ceo(company.upper()) + ['Kata']
+            ceo = check_ceo(company.upper())
         except Exception as e:
             # flash('Sorry, company or CEO not found :(')
             flash(str(e))

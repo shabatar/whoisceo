@@ -1,29 +1,8 @@
-from collections import defaultdict
 import pickle
 from elasticsearch import Elasticsearch
 import nltk.data
 from nltk.tag.stanford import StanfordNERTagger
-import csv
-
-
-def load_columns(filename):
-    with open(filename) as f:
-        columns = defaultdict(list)
-        reader = csv.DictReader(f)
-        for row in reader:
-            for (k, v) in row.items():
-                columns[k].append(v)
-    return columns
-
-
-def load_all(filename):
-    with open(filename, "rb") as f:
-        while True:
-            try:
-                yield pickle.load(f)
-            except EOFError:
-                break
-
+from utils import *
 
 SP500 = load_columns('./data/sp-500.csv')
 CEO_pkl = list(load_all('./data/ceos.pkl'))
@@ -122,9 +101,9 @@ def check_ceo(company):
         data = report.replace("\n", ".\n").replace("\n\n", "\n")
         tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
         sentences = tokenizer.tokenize(data)
-        for i, sentence in enumerate(sentences):
+        for j, sentence in enumerate(sentences):
             doc = {'text': sentence}
-            res = es.index(index="test-index", doc_type='text', id=i, body=doc)
+            res = es.index(index="test-index", doc_type='text', id=j, body=doc)
     es.indices.refresh(index="test-index")
 
     text = "ceo"
@@ -163,10 +142,6 @@ def return_dumped_ceo(company):
     return ceo_list
 
 
-def get_lastname(st):
-    return st.split()[-1]
-
-
 def full_names(names):
     tmp_result = defaultdict(int)
     first_names = {}
@@ -191,7 +166,4 @@ if __name__ == '__main__':
         print("Checking CEO for: {}".format(Names[i]))
         ceo = check_ceo(cik)
         pickle.dump(list(ceo), f)
-    # except:
-    #     pickle.dump(ceo, f)
-        # continue
 
