@@ -4,7 +4,7 @@ A flask webUI demo app to determine the CEO of a company by its CIK (Central Ind
 
 Full list of companies has been taken from [S&P 500 Index](https://www.barchart.com/stocks/indices/sp/sp500?page=all).
 
-## Before running
+## Running the app
 
 Before running the app, one needs to run
 
