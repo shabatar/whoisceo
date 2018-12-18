@@ -10,10 +10,10 @@ Before running the app, one needs to run
 $ python3 get_reports.py
 ```
 
-in order to load companies reports.
+in order to load latest companies reports (DEF 14 A) from [US Exchange Commission website](https://www.sec.gov/edgar/searchedgar/companysearch.html).
 
 
-After the reports are pickled, run
+As soon as the reports are pickled, run
 
 ```
 $ python3 search.py
