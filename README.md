@@ -1,7 +1,8 @@
 # Who Is CEO?
 
 A flask webUI demo app to determine the CEO of a company by its CIK (Central Index Key).
-Full list of companies has been taken from [S&P 500 Index](https://www.barchart.com/stocks/indices/sp/sp500?page=all)
+
+Full list of companies has been taken from [S&P 500 Index](https://www.barchart.com/stocks/indices/sp/sp500?page=all).
 
 ## Before running
 
