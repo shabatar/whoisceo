@@ -7,6 +7,6 @@ MarkupSafe==1.1.0
 nltk==3.4.5
 singledispatch==3.4.0.3
 six==1.12.0
-urllib3==1.24.1
+urllib3==1.26.5
 Werkzeug==0.14.1
 WTForms==2.2.1
